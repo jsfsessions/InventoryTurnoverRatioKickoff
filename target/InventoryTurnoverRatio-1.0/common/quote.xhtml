@@ -1,0 +1,347 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head>
+        <title>Vector Freight - Quote</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" /> 
+
+        <h:outputStylesheet library="vectorfreight" name="css/quote.css"/>        
+    </h:head>
+    <h:body>
+        <ui:decorate template="../template/layout.xhtml">                        
+
+            <ui:param name="subtitle" value="false"/>
+            <ui:param name="intro" value="false"/>
+            <ui:param name="mainheader" value="false"/>            
+            <ui:param name="topmenu" value="false"/>
+            <ui:param name="rightpanel" value="false"/>
+            <ui:param name="leftpanel" value="false"/>
+            <ui:param name="mainfooter" value="false"/>
+
+            <ui:define name="title">                   
+                <p>Vector Freight</p>
+            </ui:define>    
+
+            <ui:define name="centerpanel">
+                <h:form>
+                    <p:steps styleClass="custom" readonly="true">
+                        <p:menuitem value="Enter Details" /> 
+                        <p:menuitem value="Select Carrier" />
+                        <p:menuitem value="Confirm Details" /> 
+                        <p:menuitem value="Book Shipment" /> 
+                        <p:menuitem value="manage BOL" /> 
+                    </p:steps>
+                </h:form>
+                <h:form prependId="false"> 
+                    <p:growl id="msgs" showDetail="false"/>
+                    <p:panelGrid columns="2"
+                                 columnClasses="ui-grid-col-6 ui-grid-col-6" 
+                                 layout="grid">                                           
+                        <p:panel header="Pick up" style="text-align: left;">
+                            <div class="ui-fluid">
+ 
+
+                                <p:panelGrid columns="3" columnClasses="ui-grid-col-5, ui-grid-col-4, ui-grid-col-3" 
+                                             layout="grid" styleClass="ui-panelgrid-blank"
+                                             style="text-align: left;">
+                                    <ui:fragment/>
+                                    <p:outputLabel for="fromzoning1" value="Site Type"/>
+                                    <p:outputLabel for="fromdate" value="Pickup Date"/> 
+
+                                    <p:inputText id="fromzip1" value="#{quoteBean.shipfromZip}" 
+                                                 placeholder="Provide pick up zip code" required="true" 
+                                                 requiredMessage="Required"/>
+                                    <p:selectOneButton id="fromzoning1" value="#{quoteBean.shipFromZone}" style="font-size:13px;">
+                                        <f:selectItem itemLabel="Business" itemValue="Business"/>
+                                        <f:selectItem itemLabel="Residence" itemValue="Residence"/>
+                                    </p:selectOneButton>
+                                    <p:calendar id="fromdate" styleClass="dateTimeField" value="#{quoteBean.dateFrom}" showOn="button" pt:required="true"
+                                                required="true" requiredMessage="Required"/>
+                                </p:panelGrid>  
+
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-5" 
+                                             layout="grid" styleClass="ui-panelgrid-blank"
+                                             style="text-align: left;">
+                                    <p:outputLabel for="fromaccess1" value="Accesorials" />
+                                    <p:selectManyButton id="fromaccess1" value="#{quoteBean.shipFromServices}">
+                                        <f:selectItem itemLabel="Lift Gate" itemValue="Lift Gate"/>
+                                        <f:selectItem itemLabel="Inside Pickup" itemValue="Inside Pickup"/>                                        
+                                    </p:selectManyButton>
+                                </p:panelGrid>                               
+                            </div>
+                        </p:panel>     
+
+                        <p:panel header="Drop off" style="text-align: left;">
+                            <div class="ui-fluid">
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-5, ui-grid-col-7" 
+                                             layout="grid" styleClass="ui-panelgrid-blank"
+                                             style="text-align: left;">                 
+                                    <ui:fragment/>
+                                    <p:outputLabel for="fromzoning2" value="Site Type"/>                                   
+
+                                    <p:inputText id="fromzip2" value="#{quoteBean.shipToZip}" 
+                                                 placeholder="provide drop off zip code" required="true" 
+                                                 requiredMessage="Required"/>
+                                    <p:selectOneButton id="fromzoning2" value="#{quoteBean.shipToZone}" style="font-size:13px;">
+                                        <f:selectItem itemLabel="Business" itemValue="Business"/>
+                                        <f:selectItem itemLabel="Residence" itemValue="Residence"/>
+                                        <f:selectItem itemLabel="TradeShow" itemValue="TradeShow"/>
+                                    </p:selectOneButton>                                    
+                                </p:panelGrid>  
+
+                                <p:panelGrid columns="1" columnClasses="ui-grid-col-12" 
+                                             layout="grid" styleClass="ui-panelgrid-blank"
+                                             style="text-align: left;">
+                                    <p:outputLabel for="fromaccess2" value="Accesorials" />
+                                    <p:selectManyButton id="fromaccess2" value="#{quoteBean.shipToServices}" style="font-size:13px;">
+                                        <f:selectItem itemLabel="Lift Gate" itemValue="Lift Gate"/>
+                                        <f:selectItem itemLabel="Notify Prior To Arival" itemValue="Notify Prior To Arival"/>                                        
+                                        <f:selectItem itemLabel="Inside Delivery" itemValue="Inside Delivery"/>
+                                        <f:selectItem itemLabel="Sort &amp; Segregate" itemValue="Sort &amp; Segregate"/>
+                                    </p:selectManyButton>
+                                </p:panelGrid>                               
+                            </div>
+                        </p:panel> 
+                    </p:panelGrid>
+
+                    <p:panelGrid columns="1"
+                                 columnClasses="ui-grid-col-12" 
+                                 layout="grid">   
+                        <p:panel header="Shipment Items" style="text-align: left;">
+                            <p:commandButton value="Add Item" icon="ui-icon-circle-plus"
+                                             partialSubmit="true" process="@this"
+                                             update="itemstable" style="margin-bottom: 3px;"
+                                             actionListener="#{quoteBean.addItem()}"
+                                             ajax="true"/>
+                            <p:dataTable id="itemstable" var="t" style="text-align:center; font-size: 11px;"
+                                         value="#{quoteBean.items}"
+                                         editable="true" reflow="true">
+
+                                <p:ajax event="rowEdit" listener="#{quoteBean.onRowEdit}" update="msgs" />
+                                <p:ajax event="rowEditCancel" listener="#{quoteBean.onRowCancel}" update="msgs" />
+
+                                <p:columnGroup type="header">                                      
+                                    <p:row>
+                                        <p:column headerText="Unit Type" />
+                                        <p:column headerText="# of Units" />
+                                        <p:column headerText="Description" />
+                                        <p:column headerText="NMFC" />
+                                        <p:column headerText="Class" />
+                                        <p:column headerText="# of Pcs" />
+                                        <p:column headerText="Weight" />
+                                        <p:column headerText="lb/kg" style="width:100px;"/>
+                                        <p:column headerText="Length" />
+                                        <p:column headerText="Width" />
+                                        <p:column headerText="Height" />                                       
+                                        <p:column headerText="in/ft" style="width:100px;"/>  
+                                        <p:column headerText="Density" /> 
+                                        <p:column headerText="Stackable" /> 
+                                        <p:column headerText="Hazmat" /> 
+                                        <p:column headerText="" style="width:10px;" />                                          
+                                        <p:column headerText="" style="width:15px;" />   
+                                    </p:row>
+                                </p:columnGroup>
+
+                                <p:column headerText="Unit Type">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.unittype}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:selectOneMenu value="#{t.unittype}" style="width:90%">
+                                                <f:selectItem itemLabel="Select..." noSelectionOption="true" itemValue=""/>
+                                                <f:selectItem itemLabel="v1" itemValue="v1"/>
+                                                <f:selectItem itemLabel="v2" itemValue="v2"/>
+                                            </h:selectOneMenu>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="# of Units">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.nounits}" /></f:facet>
+                                        <f:facet name="input"><h:inputText value="#{t.nounits}" style="width:90%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Description">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.desc}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:selectOneMenu value="#{t.desc}" style="width:90%">
+                                                <f:selectItem itemLabel="Select..." noSelectionOption="true" itemValue=""/>
+                                                <f:selectItem itemLabel="v1" itemValue="v1"/>
+                                                <f:selectItem itemLabel="v2" itemValue="v2"/>
+                                            </h:selectOneMenu>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="NMFC">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.nmfc}" /></f:facet>
+                                        <f:facet name="input"><h:inputText value="#{t.nmfc}" style="width:90%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Class">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.clazz}" /></f:facet>
+                                        <f:facet name="input">
+                                            <h:selectOneMenu value="#{t.clazz}" style="width:90%">
+                                                <f:selectItem itemLabel="Select..." noSelectionOption="true" itemValue=""/>
+                                                <f:selectItem itemLabel="1" itemValue="1"/>
+                                                <f:selectItem itemLabel="2" itemValue="2"/>
+                                            </h:selectOneMenu>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="# of Pcs">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.pcs}" /></f:facet>
+                                        <f:facet name="input"><h:inputText value="#{t.pcs}" style="width:90%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Weight">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.weight}" /></f:facet>
+                                        <f:facet name="input"><h:inputText value="#{t.weight}" style="width:90%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.lborkg}" /></f:facet>
+                                        <f:facet name="input">
+                                            <p:selectOneButton value="#{t.lborkg}" style="font-size:13px;width:90%;">
+                                                <f:selectItem itemLabel="lb" itemValue="lb"/>
+                                                <f:selectItem itemLabel="kg" itemValue="kg"/>
+                                            </p:selectOneButton>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="L">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.length}" /></f:facet>
+                                        <f:facet name="input"><h:inputText value="#{t.length}" style="width:90%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="W">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.width}" /></f:facet>
+                                        <f:facet name="input"><h:inputText value="#{t.width}" style="width:90%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="H">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.height}" /></f:facet>
+                                        <f:facet name="input"><h:inputText value="#{t.height}" style="width:90%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.inorft}" /></f:facet>
+                                        <f:facet name="input">
+                                            <p:selectOneButton value="#{t.inorft}" style="font-size:13px;width:90%;">
+                                                <f:selectItem itemLabel="in" itemValue="in"/>
+                                                <f:selectItem itemLabel="ft" itemValue="ft"/>
+                                            </p:selectOneButton>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Density">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.density}" /></f:facet>
+                                        <f:facet name="input"><h:inputText value="#{t.density}" style="width:90%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Stackable">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.stackable eq true ? 'YES' : 'NO'}" /></f:facet>
+                                        <f:facet name="input">
+                                            <p:selectBooleanButton value="#{t.stackable}" onLabel="Stackit" style="width:90%" 
+                                                                   onIcon="ui-icon-check" offIcon="ui-icon-close"
+                                                                   offLabel="Stackit"/>    
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Hazmat">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{t.hazmat eq true ? 'YES' : 'NO'}" /></f:facet>
+                                        <f:facet name="input">
+                                            <p:selectBooleanButton value="#{t.hazmat}" onLabel="Hazmat" style="width:90%" 
+                                                                   onIcon="ui-icon-check" offIcon="ui-icon-close"
+                                                                   offLabel="Hazmat"/>    
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column>                                    
+                                    <p:rowEditor />                                                                       
+                                </p:column>        
+
+                                <p:column>
+                                    <p:commandButton icon="ui-icon-close"
+                                                     actionListener="#{quoteBean.removeItem(t)}"
+                                                     partialSubmit="true" process="@this"
+                                                     update="itemstable msgs"
+                                                     style="width:20px;"/> 
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>                        
+                    </p:panelGrid> 
+
+                    <p:panelGrid columns="2"
+                                 columnClasses="ui-grid-col-6 ui-grid-col-6" 
+                                 layout="grid">                                           
+                        <p:panel header="Additional details" style="text-align: left;">
+                            <div class="ui-fluid">
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-10, ui-grid-col-2" 
+                                             layout="grid" styleClass="ui-panelgrid-blank"
+                                             style="text-align: left;">
+                                    <span>Does this Shipment contain an Extreme Length Item?</span>
+                                    <p:selectBooleanButton onLabel="YES" value="#{quoteBean.extremelength}" 
+                                                           onIcon="ui-icon-check" offIcon="ui-icon-close"
+                                                           offLabel="NO" style="width:100px;"/>
+                                    <span>Does this Shipment require Protect From Freeze?</span>
+                                    <p:selectBooleanButton onLabel="YES" value="#{quoteBean.freezeprotect}"
+                                                           onIcon="ui-icon-check" offIcon="ui-icon-close"
+                                                           offLabel="NO" style="width:100px;"/>
+
+                                    <p style="color:red;font-size: 11px;">For shipments larger the 12 linear ft. A spot quote is REQUIRED. Please CALL for an accurate quote.</p>
+                                    <ui:fragment/>
+                                </p:panelGrid>
+                            </div>
+                        </p:panel>
+                        <p:panel style="text-align: left; border: none;">
+                            <div class="ui-fluid">                               
+                                <p:panelGrid columns="4" columnClasses="ui-grid-col-3, ui-grid-col-3, ui-grid-col-3, ui-grid-col-3" 
+                                             layout="grid" styleClass="ui-panelgrid-blank">
+                                    <ui:fragment/>
+                                    <p:button value="Clear Form" outcome="quote?faces-redirect=true;" icon="ui-icon-star"/>
+                                    <p:commandButton value="Select Carrier" partialSubmit="true" process="@this" icon="ui-icon-arrowthick-1-e"/>
+                                    <ui:fragment/>
+                                </p:panelGrid>
+                            </div>
+                        </p:panel>
+                    </p:panelGrid>
+                </h:form>                
+            </ui:define>                           
+        </ui:decorate>
+    </h:body>
+</html>
+
