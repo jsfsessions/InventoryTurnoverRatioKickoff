@@ -12,7 +12,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
         <meta name="apple-mobile-web-app-capable" content="yes" />  
-
         <h:outputStylesheet library="itr" name="css/index.css"/>
     </h:head>
     <h:body>
@@ -23,20 +22,20 @@
                 <p:panelGrid columns="2" columnClasses="ui-grid-col-3, ui-grid-col-9" 
                              styleClass="ui-panelgrid-blank" layout="grid"> 
                     <p:link id="brandname" href="#">Inventory Turnover Ratio</p:link>
+                    <p:link class="account" outcome="login/login.xhtml">Sign&nbsp;in</p:link>
                     <h:form>
 
                     </h:form>
                 </p:panelGrid>
             </ui:define>
 
-            <ui:param name="subtitle" value="true"/>  
-            <ui:param name="mainheader" value="true"/>
-            <ui:param name="topmenu" value="true"/>
-            <ui:param name="leftpanel" value="true"/>
-            <ui:param name="rightpanel" value="true"/>  
+            <ui:param name="subtitle" value="false"/>  
+            <ui:param name="mainheader" value="false"/>
+            <ui:param name="topmenu" value="false"/>
+            <ui:param name="leftpanel" value="false"/>
+            <ui:param name="rightpanel" value="false"/>  
             <ui:param name="mainfooter" value="true"/> 
-            <ui:param name="centerpanel" value="true"/>
-
+            <ui:param name="centerpanel" value="false"/>
         </ui:decorate>
     </h:body>
 </html>

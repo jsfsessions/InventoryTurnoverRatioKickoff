@@ -16,9 +16,4 @@
         </property>
     </jsp-config>
     <parameter-encoding default-charset="UTF-8"/>
-    <managed-bean>
-        <managed-bean-name>currentDate</managed-bean-name>
-        <managed-bean-class>java.util.Date</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
 </glassfish-web-app>

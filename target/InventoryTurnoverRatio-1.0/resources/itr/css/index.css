@@ -3,9 +3,9 @@
 } 
 
 body {
-    /*    background-image: url("#{resource['vectorfreight/images/scania.jpg']}");
-        background-repeat: no-repeat;
-        background-size: 100% auto;  or you can add the word cover */
+    background-image: url("#{resource['itr/images/warehouse.jpg']}");
+    background-repeat: no-repeat;
+    background-size: 100% auto;  
 }
 
 #title { 
@@ -13,13 +13,14 @@ body {
 }
 
 #brandname { 
-    color: black;
     font-size: 2.4em;
     text-transform: none;
     /*font-weight: 700;*/
     letter-spacing: -1px;
     text-decoration: none;
     /*border: 3px solid black;*/
+    padding-right: 10px;
+    color: white;
 }
 
 .credo { 
@@ -33,15 +34,19 @@ body {
 
 .ui-panelgrid-blank { 
     /*border: 1px solid gold;*/
-    background-color: #ededed; 
+    /*background-color: #ededed;*/ 
     /*margin-bottom: 5px;*/
 }
 
-.account { 
-    /*border: 1px dashed green;*/
-    margin: 0 auto;
-
-}
+/*.account { 
+    border: 1px dashed green;
+        margin: 0 auto;
+    text-align: right;
+    float: right;
+    color: white;
+    padding-right: 20px;
+    font-size: 4em;
+}*/
 
 .ctrl-nav { 
     /*border: 2px solid green;*/
