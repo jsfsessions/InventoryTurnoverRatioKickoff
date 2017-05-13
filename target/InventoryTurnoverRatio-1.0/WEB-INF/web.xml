@@ -15,6 +15,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <session-config>
@@ -65,11 +66,11 @@
         </form-login-config>
     </login-config>
     <security-role>
-        <description>All Inventory Turnover Ratio users are in this role</description>
+        <description>All ITR users are in this role</description>
         <role-name>userRole</role-name>
     </security-role>
     <security-role>
-        <description>The Inventory Turnover Ratio admin is in this role</description>
+        <description>The ITR admin is in this role</description>
         <role-name>adminRole</role-name>
     </security-role>
 </web-app>

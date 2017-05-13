@@ -13,8 +13,7 @@
     </h:head>
     <h:body>
         LOGIN AS: <b>#{facesContext.externalContext.remoteUser}</b> <br/>     
-        YOU DON'T HAVE ACCESS TO THIS PAGE :-) OR LOGIN FAILED!
-        <hr/>
-        <p:commandButton value="Try again" action="login?faces-redirect=true"/>
+        <h1>Authentication Failed. </h1>
+        <p:commandLink value="Try again" action="login?faces-redirect=true"/>
     </h:body>
 </html>
