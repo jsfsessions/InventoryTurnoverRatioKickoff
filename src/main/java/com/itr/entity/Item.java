@@ -140,5 +140,9 @@ public class Item implements Serializable {
     @Column(name = "SALES_CHANNEL")
     private Enum salesChannel;
 
+    public Object getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

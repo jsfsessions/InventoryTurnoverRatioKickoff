@@ -1,5 +1,6 @@
 package com.itr.control;
 
+import com.itr.boundary.ItemService;
 import com.itr.entity.Item;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -10,7 +11,7 @@ import javax.inject.Named;
 @RequestScoped
 public class ItemBean {
     
-    private Item ite;
+    private Item item;
     
     @EJB
     private ItemService itemService;
@@ -20,9 +21,15 @@ public class ItemBean {
         item = new Item();
     }
     
-    // initializa
-    
-    
-    
-    
+    public void saveItemAction() { 
+        
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 }

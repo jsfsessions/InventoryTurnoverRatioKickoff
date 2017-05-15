@@ -1,11 +1,12 @@
 package com.itr.entity;
 
+import com.itr.entity.Address;
 import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-05-14T18:17:09")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-05-15T18:46:01")
 @StaticMetamodel(Item.class)
 public class Item_ { 
 
@@ -36,6 +37,7 @@ public class Item_ {
     public static volatile SingularAttribute<Item, Float> weight;
     public static volatile SingularAttribute<Item, String> sellerInfo;
     public static volatile SingularAttribute<Item, Float> customerRating;
+    public static volatile SingularAttribute<Item, Address> storeAddress;
     public static volatile SingularAttribute<Item, Integer> palletId;
     public static volatile SingularAttribute<Item, String> modelNumber;
     public static volatile SingularAttribute<Item, Float> dimsY;
