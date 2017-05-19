@@ -17,132 +17,133 @@ import javax.persistence.Temporal;
 @Table(name = "ITEMS")
 public class Item implements Serializable {
 
+    private static final long serialVersionUID = 42L;
+
     @Id
     @Column(name = "ID", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "PRODUCT_ID")
+    @Column(name = "product_id")
     private Integer productId;
 
-    @Column(name = "UPC")
+    @Column(name = "upc")
     private String upc;
 
-    @Column(name = "ITEM_NAME_FROM_PROFORMA")
+    @Column(name = "item_name_from_proforma")
     private String itemNameFromProforma;
 
-    @Column(name = "ITEM_DESCRIPTION")
+    @Column(name = "item_description")
     private String itemDescription;
 
-    @Column(name = "BRAND_NAME")
+    @Column(name = "brand_name")
     private String brandName;
 
-    @Column(name = "RETAIL_PRICE")
+    @Column(name = "retail_price")
     private Float retailPrice;
 
-    @Column(name = "SALE_PRICE")
+    @Column(name = "sale_price")
     private Float salePrice;
 
-    @Column(name = "MODEL_NUMBER")
+    @Column(name = "model_number")
     private String modelNumber;
 
-    @Column(name = "COLOR")
+    @Column(name = "color")
     private String color;
 
-    @Column(name = "CATEGORY_FULL")
+    @Column(name = "category_full")
     private String categoryFull;
 
-    @Column(name = "STANDARD_SHIP_RATE")
+    @Column(name = "standard_ship_rate")
     private Float standardShipRate;
 
-    @Column(name = "PALLET_SIZE")
+    @Column(name = "pallet_size")
     private Enum palletSize;  //
 
-    @Column(name = "WEIGHT")
+    @Column(name = "weight")
     private Float weight;
 
-    @Column(name = "PALLET_ID")
+    @Column(name = "pallet_id")
     private Integer palletId;
 
-    @Column(name = "PALLET_NAME")
+    @Column(name = "pallet_name")
     private String palletName;
 
-    @Column(name = "SELLER_INFO")
+    @Column(name = "seller_info")
     private String sellerInfo;
 
-    @Column(name = "CUSTOMER_RATING")
+    @Column(name = "customer_rating")
     private Float customerRating;
 
-    @Column(name = "CUSTOMER_REVIEWS")
+    @Column(name = "customer_reviews")
     private Float customerReviews;
 
 //    this property shows total quantity in all stores
-    @Column(name = "TOTAL_QTY")
+    @Column(name = "total_qty")
     private Integer totalQty;
 
-    @Column(name = "VENDOR")
+    @Column(name = "vendor")
     private String vendor;
 
-    @Column(name = "DEPARTMENT")
+    @Column(name = "department")
     private String department;
 
-    @Column(name = "SUBCATEGORY")
+    @Column(name = "subcategory")
     private String subCategory;
 
-    @Column(name = "DIMS_X")
+    @Column(name = "dims_x")
     private Float dimsX;
 
-    @Column(name = "DIMS_Y")
+    @Column(name = "dims_y")
     private Float dimsY;
 
-    @Column(name = "DIMS_Z")
+    @Column(name = "dims_z")
     private Float dimsZ;
 
-    @Column(name = "RETURN_REASON")
+    @Column(name = "return_reason")
     private String returnReason;
 
 //    <===========================================================================>    
 //    need to create a cdi bean validation to make sure the product is not placed in a bin that is full; this bin could be in any locale
-    @Column(name = "BIN_LOCATION")
+    @Column(name = "bin_location")
     private String binLocation;
 
 //    <===========================================================================>    
 //    item to be sent to a store location cdi built as follows TXDAL75247 or OKOKC73107 ...  state + city + zipcode
-    @Column(name = "STORE_LOCATION")
+    @Column(name = "store_location")
     private String storeLocation;
-    
-    @Column(name = "STORE_ADDRESS")
-    
+
+    @Column(name = "store_address")
+
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "streetAddress", column = @Column(name = "STREET_ADDRESS"))
+        @AttributeOverride(name = "streetAddress", column = @Column(name = "street_address"))
         ,
-        @AttributeOverride(name = "city", column = @Column(name = "CITY"))
+        @AttributeOverride(name = "city", column = @Column(name = "city"))
         ,
-        @AttributeOverride(name = "state", column = @Column(name = "STATE"))
+        @AttributeOverride(name = "state", column = @Column(name = "state"))
         ,
-        @AttributeOverride(name = "zipCode", column = @Column(name = "ZIPCODE"))
-    })  
+        @AttributeOverride(name = "zipCode", column = @Column(name = "zipcode"))
+    })
     private Address storeAddress;
 
 //    <===========================================================================>    
 //    create cdi to calculate total qty in store of specific locale
-    @Column(name = "STORE_QTY")
+    @Column(name = "store_qty")
     private Integer storeQty;
 
-    @Column(name = "DATE_SHIPMENT_RECEIVED")
+    @Column(name = "date_shipment_received")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateShipmentReceived;
 
-    @Column(name = "SLOT_IN_BIN_LOCATION")
+    @Column(name = "slot_in_bin_location")
     private String slotInBinLocation;
 
-    @Column(name = "SALES_CHANNEL")
+    @Column(name = "sales_channel")
     private Enum salesChannel;
 
     public Object getId() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
 }

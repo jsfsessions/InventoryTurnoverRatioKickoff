@@ -5,6 +5,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Address implements java.io.Serializable {
 
+    private static final long serialVersionUID = 42L;
+
     private String streetAddress;
     private String city;
     private String state;
@@ -41,7 +43,5 @@ public class Address implements java.io.Serializable {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
-
-    
 
 }

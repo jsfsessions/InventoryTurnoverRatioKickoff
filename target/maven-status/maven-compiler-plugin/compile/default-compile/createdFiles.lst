@@ -1,9 +1,0 @@
-com\itr\entity\Item_.class
-com\itr\entity\SalesPerson.class
-com\itr\eum\salesChannel.class
-com\itr\eum\palletSize.class
-com\itr\entity\Address_.class
-com\itr\entity\Address.class
-com\itr\boundary\ItemService.class
-com\itr\control\ItemBean.class
-com\itr\entity\Item.class
