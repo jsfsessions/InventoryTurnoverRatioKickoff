@@ -14,6 +14,6 @@
     <h:body>
         LOGIN AS: <b>#{facesContext.externalContext.remoteUser}</b> <br/>     
         <h1>Authentication Failed. </h1>
-        <p:commandLink value="Try again" action="login?faces-redirect=true"/>
+        <p:link value="Try again" outcome="login.xhtml"/>
     </h:body>
 </html>

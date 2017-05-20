@@ -1,4 +1,4 @@
-package com.itr.eum;
+package com.itr.enums;
 
 public enum PalletSize {
     

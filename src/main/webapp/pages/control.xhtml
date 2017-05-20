@@ -4,6 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Inventory Management</title>            
@@ -14,17 +15,46 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />  
         <h:outputStylesheet library="itr" name="css/index.css"/>
     </h:head>
-    <h:body>
-        <ui:param name="title" value="true"/>  
-        <ui:decorate template="template/layout.xhtml">  
-            <ui:param name="subtitle" value="true"/>  
-            <ui:param name="mainheader" value="true"/>
-            <ui:param name="topmenu" value="true"/>
-            <ui:param name="leftpanel" value="true"/>
-            <ui:param name="rightpanel" value="true"/>  
-            <ui:param name="mainfooter" value="true"/> 
-            <ui:param name="centerpanel" value="true"/>
-        </ui:decorate>
+    <h:body>               
+        <ui:decorate template="/template/layout.xhtml">  
+            <ui:param name="subtitle" value="false"/>  
+            <ui:param name="mainheader" value="false"/>
+            <ui:param name="topmenu" value="false"/>
+            <ui:param name="leftpanel" value="false"/>
+            <ui:param name="rightpanel" value="false"/>  
+            <ui:param name="mainfooter" value="false"/> 
+
+            <ui:define name="centerpanel">                                
+                <h:form>                    
+                    <p:panelGrid columns="3" style="margin: 0 auto;">
+                        <p:outputLabel for="pid" value="Product id:"/>                                
+                        <p:inputText id="pid" value="#{itemBean.item.productId}" 
+                                     placeholder="Product ID" required="true" pt:required="true"
+                                     requiredMessage="A product ID is required (e.g. 3948382)">
+                            <f:convertNumber for="pid" integerOnly="true"/>
+                        </p:inputText>    
+                        <p:message for="pid"/>
+
+                        <p:outputLabel for="upc" value="UPC:"/>                                
+                        <p:inputText id="upc" value="#{itemBean.item.upc}" 
+                                     placeholder="upc" required="true" pt:required="true"
+                                     requiredMessage="A upc is required (e.g. fooupc)"/>
+                        <p:message for="upc"/>
+                        <p:commandButton value="Save Item" actionListener="#{itemBean.saveItemAction()}" ajax="false"/>
+                    </p:panelGrid>
+                    <div style="background-color: green">
+                        <strong>Last saved item:</strong><br/>
+                        #{itemBean.item}
+                    </div>
+                </h:form>
+
+                <hr/>
+                <h:form id="logoutFormId">
+                    <!-- REMOVE INLINE CSS AND DO IT CORRECTLY -->
+                    <p:commandLink style="font-size:20px; background-color: white;" action="#{logoutBean.logoutAction}" value="Logout"/>                                    
+                </h:form>
+            </ui:define>
+        </ui:decorate>               
     </h:body>
 </html>
 

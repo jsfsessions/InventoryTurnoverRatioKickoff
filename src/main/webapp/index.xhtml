@@ -21,12 +21,19 @@
             <ui:define name="title">
                 <p:panelGrid columns="2" columnClasses="ui-grid-col-3, ui-grid-col-9" 
                              styleClass="ui-panelgrid-blank" layout="grid"> 
-                    <p:link id="brandname" href="#">Inventory Turnover Ratio</p:link>
-                    <p:link class="account" outcome="login/login.xhtml">Sign&nbsp;in</p:link>
-                    <h:form>
-
-                    </h:form>
+                    <a id="brandname" href="#">Inventory Turnover Ratio</a>                                                            
                 </p:panelGrid>
+
+                <!-- PLEASE, DELETE INLINE STYLES AND USE WHATEVER CSS YOU WANT -->
+                <hr/>
+                <p:link style="font-size: 30px; background-color: white;" outcome="admin/admin.xhtml">Access admin forbidden page</p:link><br/><br/><br/>
+                <p:link style="font-size: 30px; background-color: white;" outcome="pages/control.xhtml">Access user forbidden page</p:link><br/><br/><br/>
+                <p:link style="font-size: 30px; background-color: white;" outcome="login/login.xhtml">Sign&nbsp;in</p:link><br/><br/><hr/>
+
+                <h:form id="logoutFormId">
+                    <!-- REMOVE INLINE CSS AND DO IT CORRECTLY -->
+                    <p:commandLink style="font-size:20px; background-color: white;" action="#{logoutBean.logoutAction}" value="Logout"/>                                    
+                </h:form>
             </ui:define>
 
             <ui:param name="subtitle" value="false"/>  

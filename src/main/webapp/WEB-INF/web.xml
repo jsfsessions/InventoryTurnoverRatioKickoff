@@ -24,7 +24,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
     <!-- configure a common error page for all exceptions -->
     <error-page>
@@ -50,7 +50,7 @@
         <web-resource-collection>
             <web-resource-name>Admin Home Page</web-resource-name>
             <description>This page can be accessed only by the admin</description>
-            <url-pattern>/admin/itr-admin.xhtml</url-pattern>
+            <url-pattern>/admin/admin.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description>Enable access only to adminRole</description>

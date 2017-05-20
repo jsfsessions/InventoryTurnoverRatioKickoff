@@ -10,19 +10,19 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class ItemBean {
-    
+
     private Item item;
-    
+
     @EJB
     private ItemService itemService;
-    
+
     @PostConstruct
-    public void init() { 
+    public void init() {
         item = new Item();
     }
-    
-    public void saveItemAction() { 
-        
+
+    public void saveItemAction() {
+        itemService.saveItem(item);
     }
 
     public Item getItem() {
@@ -31,5 +31,10 @@ public class ItemBean {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemBean{" + "item=" + item + '}';
     }
 }

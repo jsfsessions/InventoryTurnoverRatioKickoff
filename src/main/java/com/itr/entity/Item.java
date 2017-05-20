@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -14,13 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 @Entity
-@Table(name = "ITEMS")
+@Table(name = "items")
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 42L;
 
     @Id
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "ID", updatable = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -142,8 +143,310 @@ public class Item implements Serializable {
     @Column(name = "sales_channel")
     private Enum salesChannel;
 
-    public Object getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
+    public String getUpc() {
+        return upc;
+    }
+
+    public void setUpc(String upc) {
+        this.upc = upc;
+    }
+
+    public String getItemNameFromProforma() {
+        return itemNameFromProforma;
+    }
+
+    public void setItemNameFromProforma(String itemNameFromProforma) {
+        this.itemNameFromProforma = itemNameFromProforma;
+    }
+
+    public String getItemDescription() {
+        return itemDescription;
+    }
+
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public Float getRetailPrice() {
+        return retailPrice;
+    }
+
+    public void setRetailPrice(Float retailPrice) {
+        this.retailPrice = retailPrice;
+    }
+
+    public Float getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(Float salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public String getModelNumber() {
+        return modelNumber;
+    }
+
+    public void setModelNumber(String modelNumber) {
+        this.modelNumber = modelNumber;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getCategoryFull() {
+        return categoryFull;
+    }
+
+    public void setCategoryFull(String categoryFull) {
+        this.categoryFull = categoryFull;
+    }
+
+    public Float getStandardShipRate() {
+        return standardShipRate;
+    }
+
+    public void setStandardShipRate(Float standardShipRate) {
+        this.standardShipRate = standardShipRate;
+    }
+
+    public Enum getPalletSize() {
+        return palletSize;
+    }
+
+    public void setPalletSize(Enum palletSize) {
+        this.palletSize = palletSize;
+    }
+
+    public Float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
+
+    public Integer getPalletId() {
+        return palletId;
+    }
+
+    public void setPalletId(Integer palletId) {
+        this.palletId = palletId;
+    }
+
+    public String getPalletName() {
+        return palletName;
+    }
+
+    public void setPalletName(String palletName) {
+        this.palletName = palletName;
+    }
+
+    public String getSellerInfo() {
+        return sellerInfo;
+    }
+
+    public void setSellerInfo(String sellerInfo) {
+        this.sellerInfo = sellerInfo;
+    }
+
+    public Float getCustomerRating() {
+        return customerRating;
+    }
+
+    public void setCustomerRating(Float customerRating) {
+        this.customerRating = customerRating;
+    }
+
+    public Float getCustomerReviews() {
+        return customerReviews;
+    }
+
+    public void setCustomerReviews(Float customerReviews) {
+        this.customerReviews = customerReviews;
+    }
+
+    public Integer getTotalQty() {
+        return totalQty;
+    }
+
+    public void setTotalQty(Integer totalQty) {
+        this.totalQty = totalQty;
+    }
+
+    public String getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(String subCategory) {
+        this.subCategory = subCategory;
+    }
+
+    public Float getDimsX() {
+        return dimsX;
+    }
+
+    public void setDimsX(Float dimsX) {
+        this.dimsX = dimsX;
+    }
+
+    public Float getDimsY() {
+        return dimsY;
+    }
+
+    public void setDimsY(Float dimsY) {
+        this.dimsY = dimsY;
+    }
+
+    public Float getDimsZ() {
+        return dimsZ;
+    }
+
+    public void setDimsZ(Float dimsZ) {
+        this.dimsZ = dimsZ;
+    }
+
+    public String getReturnReason() {
+        return returnReason;
+    }
+
+    public void setReturnReason(String returnReason) {
+        this.returnReason = returnReason;
+    }
+
+    public String getBinLocation() {
+        return binLocation;
+    }
+
+    public void setBinLocation(String binLocation) {
+        this.binLocation = binLocation;
+    }
+
+    public String getStoreLocation() {
+        return storeLocation;
+    }
+
+    public void setStoreLocation(String storeLocation) {
+        this.storeLocation = storeLocation;
+    }
+
+    public Address getStoreAddress() {
+        return storeAddress;
+    }
+
+    public void setStoreAddress(Address storeAddress) {
+        this.storeAddress = storeAddress;
+    }
+
+    public Integer getStoreQty() {
+        return storeQty;
+    }
+
+    public void setStoreQty(Integer storeQty) {
+        this.storeQty = storeQty;
+    }
+
+    public Date getDateShipmentReceived() {
+        return dateShipmentReceived;
+    }
+
+    public void setDateShipmentReceived(Date dateShipmentReceived) {
+        this.dateShipmentReceived = dateShipmentReceived;
+    }
+
+    public String getSlotInBinLocation() {
+        return slotInBinLocation;
+    }
+
+    public void setSlotInBinLocation(String slotInBinLocation) {
+        this.slotInBinLocation = slotInBinLocation;
+    }
+
+    public Enum getSalesChannel() {
+        return salesChannel;
+    }
+
+    public void setSalesChannel(Enum salesChannel) {
+        this.salesChannel = salesChannel;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.id);
+        hash = 47 * hash + Objects.hashCode(this.productId);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Item other = (Item) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.productId, other.productId)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" + "id=" + id + ", productId=" + productId + ", upc=" + upc + ", itemNameFromProforma=" + itemNameFromProforma + ", itemDescription=" + itemDescription + ", brandName=" + brandName + ", retailPrice=" + retailPrice + ", salePrice=" + salePrice + ", modelNumber=" + modelNumber + ", color=" + color + ", categoryFull=" + categoryFull + ", standardShipRate=" + standardShipRate + ", palletSize=" + palletSize + ", weight=" + weight + ", palletId=" + palletId + ", palletName=" + palletName + ", sellerInfo=" + sellerInfo + ", customerRating=" + customerRating + ", customerReviews=" + customerReviews + ", totalQty=" + totalQty + ", vendor=" + vendor + ", department=" + department + ", subCategory=" + subCategory + ", dimsX=" + dimsX + ", dimsY=" + dimsY + ", dimsZ=" + dimsZ + ", returnReason=" + returnReason + ", binLocation=" + binLocation + ", storeLocation=" + storeLocation + ", storeAddress=" + storeAddress + ", storeQty=" + storeQty + ", dateShipmentReceived=" + dateShipmentReceived + ", slotInBinLocation=" + slotInBinLocation + ", salesChannel=" + salesChannel + '}';
+    }
+        
 }
